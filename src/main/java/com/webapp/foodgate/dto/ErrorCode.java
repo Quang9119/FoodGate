@@ -51,4 +51,12 @@ public class ErrorCode {
     public static final String PERMISSION_ERROR_EXIST = "ERROR-PERMISSION-0001";
 
     public static final String PERMISSION_ERROR_NOT_FOUND = "ERROR-PERMISSION-0002";
+
+    /**
+     * Starting error code FOOD
+     */
+    public static final String FOOD_ERROR_NOT_FOUND = "ERROR-FOOD-0001";
+    public static final String FOOD_ERROR_TITLE = "ERROR-FOOD-0002";
+
+
 }
