@@ -21,4 +21,7 @@ public class Food extends Auditable<String> {
     private String description;
     @Column(name = "price")
     private double price;
+    @ManyToOne
+    @JoinColumn(name = "category_Id")
+    private Category category;
 }
