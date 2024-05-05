@@ -66,4 +66,10 @@ public class ErrorCode {
     public static final String FOOD_ERROR_TITLE = "ERROR-FOOD-0002";
 
 
+
+    /**
+     * Starting error code CATEGORY
+     */
+    public static final String CATEGORY_ERROR_NOT_FOUND = "ERROR-CATEGORY-0001";
+    public static final String CATEGORY_ERROR_NAME = "ERROR-CATEGORY-0002";
 }

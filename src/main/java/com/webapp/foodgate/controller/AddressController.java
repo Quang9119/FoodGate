@@ -76,19 +76,19 @@ public class AddressController {
         return apiMessageDto;
     }
 
-    @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.GET_LIST_ADDRESS + "')")
-    public ApiMessageDto<ResponseListDto<List<AddressAdminDto>>> list(AddressCriteria addressCriteria, Pageable pageable) {
-        ApiMessageDto<ResponseListDto<List<AddressAdminDto>>> responseListObjApiMessageDto = new ApiMessageDto<>();
-        Page<Address> addressPage = addressRepository.findAll(addressCriteria.getSpecification(), pageable);
-        ResponseListDto<List<AddressAdminDto>> responseListObj = new ResponseListDto<>();
-        responseListObj.setContent(addressMapper.fromEntityListToAddressAdminDtoList(addressPage.getContent()));
-        responseListObj.setTotalPages(addressPage.getTotalPages());
-        responseListObj.setTotalElements(addressPage.getTotalElements());
-        responseListObjApiMessageDto.setData(responseListObj);
-        responseListObjApiMessageDto.setMessage("Get list address success");
-        return responseListObjApiMessageDto;
-    }
+//    @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.GET_LIST_ADDRESS + "')")
+//    public ApiMessageDto<ResponseListDto<List<AddressAdminDto>>> list(AddressCriteria addressCriteria, Pageable pageable) {
+//        ApiMessageDto<ResponseListDto<List<AddressAdminDto>>> responseListObjApiMessageDto = new ApiMessageDto<>();
+//        Page<Address> addressPage = addressRepository.findAll(addressCriteria.getSpecification(), pageable);
+//        ResponseListDto<List<AddressAdminDto>> responseListObj = new ResponseListDto<>();
+//        responseListObj.setContent(addressMapper.fromEntityListToAddressAdminDtoList(addressPage.getContent()));
+//        responseListObj.setTotalPages(addressPage.getTotalPages());
+//        responseListObj.setTotalElements(addressPage.getTotalElements());
+//        responseListObjApiMessageDto.setData(responseListObj);
+//        responseListObjApiMessageDto.setMessage("Get list address success");
+//        return responseListObjApiMessageDto;
+//    }
 
     @PutMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasAuthority('" + AuthoritiesConstants.UPDATE_ADDRESS + "')")
