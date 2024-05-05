@@ -1,6 +1,7 @@
 package com.webapp.foodgate.entities;//package com.example.footgate.entities;
 
 
+import com.webapp.foodgate.constant.UserBaseConstant;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -39,5 +40,5 @@ public abstract class Auditable<T> extends ReuseId {
     @Column(name = "modified_date", nullable = true)
     private Date modifiedDate;
 
-    private int status = 1;
+    private int status = UserBaseConstant.STATUS_ACTIVE;
 }

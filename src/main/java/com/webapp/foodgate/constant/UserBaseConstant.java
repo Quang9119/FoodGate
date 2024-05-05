@@ -10,6 +10,8 @@ public class UserBaseConstant {
     public static final int STATUS_LOCKED = -1;
     public static final int STATUS_DELETE = -2;
 
+    public static final int[] STATUS = {STATUS_ACTIVE, STATUS_PENDING, STATUS_LOCKED, STATUS_DELETE};
+
     /**
      * ADMIN - all roles
      * manager - manager a restaurant
@@ -18,6 +20,9 @@ public class UserBaseConstant {
     public static final Integer USER_KIND_ADMIN = 1;
     public static final Integer USER_KIND_MANAGER = 2;
     public static final Integer USER_KIND_CONSUMER = 3;
+
+    public static final int[] KIND = {USER_KIND_ADMIN, USER_KIND_MANAGER, USER_KIND_CONSUMER};
+
     /**
      * isFemale
      */

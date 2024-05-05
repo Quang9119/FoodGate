@@ -45,10 +45,16 @@ public class ErrorCode {
      */
     public static final String GROUP_ERROR_EXIST = "ERROR-GROUP-0001";
     public static final String GROUP_ERROR_NOT_FOUND = "ERROR-GROUP-0002";
+    public static final String GROUP_ERROR_INVALID_STATUS = "ERROR-GROUP-0002";
+    public static final String GROUP_ERROR_INVALID_KIND = "ERROR-GROUP-0003";
     /**
      * Starting error code PERMISSION
      */
     public static final String PERMISSION_ERROR_EXIST = "ERROR-PERMISSION-0001";
 
     public static final String PERMISSION_ERROR_NOT_FOUND = "ERROR-PERMISSION-0002";
+    /**
+     * Starting error code ADDRESS
+     */
+    public static final String ADDRESS_ERROR_NOT_FOUND = "ERROR-ADDRESS-0001";
 }
