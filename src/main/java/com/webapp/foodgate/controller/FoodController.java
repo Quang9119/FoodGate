@@ -14,6 +14,7 @@ import com.webapp.foodgate.repository.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class FoodController {
     @Autowired
     private FoodRepository foodRepository;
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PermitAll
+    @PreAuthorize("hasAuthority('FO_C')")
     public ApiResponse<String> create(@Valid @RequestBody Food req) {
         ApiResponse<String> apiMessageDto = new ApiResponse<>();
         Food food = new Food();
@@ -51,7 +52,7 @@ public class FoodController {
         return apiMessageDto;
     }
     @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PermitAll
+    @PreAuthorize("hasAuthority('FO_U')")
     public ApiResponse<String> update(@Valid @RequestBody Food req,
                                       @RequestParam Long foodId) {
         ApiResponse<String> apiMessageDto = new ApiResponse<>();
@@ -73,7 +74,7 @@ public class FoodController {
         return apiMessageDto;
     }
     @DeleteMapping(value = "/delete/{foodId}")
-    @PermitAll
+    @PreAuthorize("hasAuthority('FO_D')")
     public ApiResponse<String> delete(@Valid @PathVariable Long foodId) {
         ApiResponse<String> apiMessageDto = new ApiResponse<>();
         Optional<Food> food = foodRepository.findById(foodId);
@@ -88,7 +89,7 @@ public class FoodController {
         apiMessageDto.setMessage("Delete food Success");
         return apiMessageDto;
     }
-    @GetMapping(value = "/search")
+    @GetMapping(value = "/list")
     @PermitAll
     public ResponseListDto<List<Food>> search(@RequestParam String keyword) {
         ResponseListDto<List<Food>> responseListDto = new ResponseListDto<>();
