@@ -27,7 +27,6 @@ public class Restaurant extends Auditable<String> {
     @Column(name = "image_path")
     private String imagePath;
 
-
     @Column(name = "description")
     private String description;
 
@@ -41,19 +40,11 @@ public class Restaurant extends Auditable<String> {
             inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"))
     private List<Order> linesOrder;
 
-
     @ManyToMany(fetch = FetchType.LAZY , cascade = CascadeType.REMOVE)
     @JoinTable(name = "db_foodgate_food_restaurant",
             joinColumns = @JoinColumn(name = "restaurant_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "food_id", referencedColumnName = "id"))
     private List<Food> linesFood;
-
-    @ManyToMany(fetch = FetchType.LAZY , cascade = CascadeType.REMOVE)
-    @JoinTable(name = "db_foodgate_category_restaurant",
-            joinColumns = @JoinColumn(name = "restaurant_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
-    private List<Category> linesCategory;
-
 
     @Column(name = "isOpened")
     private boolean isOpened;

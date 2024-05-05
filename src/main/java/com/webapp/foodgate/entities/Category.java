@@ -21,11 +21,4 @@ public class Category extends Auditable<String> {
     @Column(name = "name")
     private String name;
 
-    @OneToMany
-    @JoinTable(name = "db_foodgate_food_category",
-            joinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "food_id", referencedColumnName = "id"))
-    private List<Food> lines;
-
-
 }
