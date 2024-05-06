@@ -45,6 +45,7 @@ public class ErrorCode {
      */
     public static final String GROUP_ERROR_EXIST = "ERROR-GROUP-0001";
     public static final String GROUP_ERROR_NOT_FOUND = "ERROR-GROUP-0002";
+
     public static final String GROUP_ERROR_INVALID_STATUS = "ERROR-GROUP-0002";
     public static final String GROUP_ERROR_INVALID_KIND = "ERROR-GROUP-0003";
     /**
@@ -57,4 +58,18 @@ public class ErrorCode {
      * Starting error code ADDRESS
      */
     public static final String ADDRESS_ERROR_NOT_FOUND = "ERROR-ADDRESS-0001";
+
+    /**
+     * Starting error code FOOD
+     */
+    public static final String FOOD_ERROR_NOT_FOUND = "ERROR-FOOD-0001";
+    public static final String FOOD_ERROR_TITLE = "ERROR-FOOD-0002";
+
+
+
+    /**
+     * Starting error code CATEGORY
+     */
+    public static final String CATEGORY_ERROR_NOT_FOUND = "ERROR-CATEGORY-0001";
+    public static final String CATEGORY_ERROR_NAME = "ERROR-CATEGORY-0002";
 }
