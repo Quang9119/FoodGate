@@ -1,15 +1,18 @@
 package com.webapp.foodgate.controller;
 
+import com.webapp.foodgate.constant.AuthoritiesConstants;
 import com.webapp.foodgate.dto.ApiMessageDto;
 import com.webapp.foodgate.dto.ApiResponse;
 import com.webapp.foodgate.dto.ErrorCode;
 import com.webapp.foodgate.dto.ResponseListDto;
+import com.webapp.foodgate.dto.address.AddressAdminDto;
 import com.webapp.foodgate.dto.member.MemberAdminDto;
 import com.webapp.foodgate.dto.permission.PermissionAdminDto;
 import com.webapp.foodgate.entities.Member;
 import com.webapp.foodgate.entities.Permission;
 import com.webapp.foodgate.entities.criteria.MemberCriteria;
 import com.webapp.foodgate.entities.criteria.PermissionCriteria;
+import com.webapp.foodgate.exception.NotFoundException;
 import com.webapp.foodgate.form.member.RequestAddPermissionForm;
 import com.webapp.foodgate.mapper.PermissionMapper;
 import com.webapp.foodgate.repository.PermissionRepository;
@@ -37,9 +40,9 @@ public class PermissionController {
         this.permissionRepository = permissionRepository;
     }
 
-    @PostMapping(value = "/add_permission")
+    @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('PER_C')")
-    public ApiResponse<String> addGroup(@Valid @RequestBody RequestAddPermissionForm requestAddPermissionForm, BindingResult bindingResult) {
+    public ApiResponse<String> create(@Valid @RequestBody RequestAddPermissionForm requestAddPermissionForm, BindingResult bindingResult) {
         ApiResponse<String> apiMessageDto = new ApiResponse<>();
         Permission permission = new Permission();
         if (permissionRepository.existsByPCode(requestAddPermissionForm.getPermissionCode())
@@ -61,7 +64,7 @@ public class PermissionController {
     }
 
     @GetMapping(value = "/list")
-    @PreAuthorize("hasAuthority('PER_L')")
+    @PreAuthorize("hasAuthority('"+ AuthoritiesConstants.GET_LIST_PERMISSION +"')")
     public ApiMessageDto<ResponseListDto<List<PermissionAdminDto>>> list(PermissionCriteria permissionCriteria, Pageable pageable) {
         ApiMessageDto<ResponseListDto<List<PermissionAdminDto>>> responseListObjApiMessageDto = new ApiMessageDto<>();
         Page<Permission> permissionPage = permissionRepository.findAll(permissionCriteria.getSpecification(), pageable);
@@ -73,4 +76,23 @@ public class PermissionController {
         responseListObjApiMessageDto.setMessage("Get list permission success");
         return responseListObjApiMessageDto;
     }
+    @GetMapping(value ="/get/{id}")
+    @PreAuthorize("hasAuthority('"+ AuthoritiesConstants.GET_PERMISSION +"')")
+    public ApiMessageDto<PermissionAdminDto> get(@PathVariable("id") Long id){
+        ApiMessageDto<PermissionAdminDto> apiMessageDto = new ApiMessageDto<>();
+        Permission permission = permissionRepository.findById(id).orElse(null);
+        if(permission==null){
+            throw new NotFoundException("Not found permission",ErrorCode.PERMISSION_ERROR_NOT_FOUND);
+        }
+        apiMessageDto.setData(permissionMapper.fromPermissionToPermissionAdminDto(permission));
+        apiMessageDto.setResult(true);
+        apiMessageDto.setMessage("Get permission success");
+        return apiMessageDto;
+    }
+//    @PutMapping(value="/update")
+//    @PreAuthorize("hasAuthority('"+ AuthoritiesConstants.UPDATE_PERMISSION +"')")
+//    public ApiMessageDto<String> update(){
+//
+//    }
+
 }

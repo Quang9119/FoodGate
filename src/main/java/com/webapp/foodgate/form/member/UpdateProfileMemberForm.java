@@ -1,13 +1,16 @@
 package com.webapp.foodgate.form.member;
 
 import com.webapp.foodgate.validation.PhoneNumKind;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-
+@Data
+@ApiModel
 public class UpdateProfileMemberForm {
     @ApiModelProperty(name = "phoneNumber")
     @PhoneNumKind(message = "phoneNumber invalid")

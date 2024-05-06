@@ -6,6 +6,7 @@ import com.webapp.foodgate.dto.member.MemberDto;
 import com.webapp.foodgate.entities.Member;
 import com.webapp.foodgate.form.member.SignUpMemberForm;
 import com.webapp.foodgate.form.member.UpdateMemberForm;
+import com.webapp.foodgate.form.member.UpdateProfileMemberForm;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -67,18 +68,27 @@ public interface MemberMapper {
     @IterableMapping(elementTargetType = MemberDto.class, qualifiedByName = "fromMemberToMemberDto")
     List<MemberDto> fromEntityListToDeveloperDtoAutoComplete(List<Member> members);
 
-//    @Mapping(source = "phoneNumber", target = "phoneNumber")
-//    @Mapping(source = "isFemale", target = "isFemale")
-//    @Mapping(source = "email", target = "email")
-//    @Mapping(source = "firstName", target = "firstName")
-//    @Mapping(source = "lastName", target = "lastName")
-//    @Mapping(source = "birthDate", target = "birthDate")
-//    @Mapping(source = "imagePath", target = "imagePath")
-//    @Mapping(source = "login", target = "login")
-//    @Mapping(source = "kind", target = "kind")
-//    @Mapping(source = "status", target = "status")
-//    @BeanMapping(ignoreByDefault = true)
-//    void fromUpdateMemberFormToEntity(UpdateMemberForm updateMemberForm,@MappingTarget Member member);
+    @Mapping(source = "phoneNumber", target = "phoneNumber")
+    @Mapping(source = "isFemale", target = "isFemale")
+    @Mapping(source = "email", target = "email")
+    @Mapping(source = "firstName", target = "firstName")
+    @Mapping(source = "lastName", target = "lastName")
+    @Mapping(source = "birthDate", target = "birthDate")
+    @Mapping(source = "imagePath", target = "imagePath")
+    @Mapping(source = "login", target = "login")
+    @BeanMapping(ignoreByDefault = true)
+    void updateMemberFromUpdateMemberForm(UpdateMemberForm updateMemberForm,@MappingTarget Member member);
 
+
+    @Mapping(source = "phoneNumber", target = "phoneNumber")
+    @Mapping(source = "isFemale", target = "isFemale")
+    @Mapping(source = "email", target = "email")
+    @Mapping(source = "firstName", target = "firstName")
+    @Mapping(source = "lastName", target = "lastName")
+    @Mapping(source = "birthDate", target = "birthDate")
+    @Mapping(source = "imagePath", target = "imagePath")
+    @Mapping(source = "login", target = "login")
+    @BeanMapping(ignoreByDefault = true)
+    void updateMemberFromUpdateMemberForm(UpdateProfileMemberForm updateProfileMemberForm, @MappingTarget Member member);
 
 }

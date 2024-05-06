@@ -11,5 +11,4 @@ public class PermissionAdminDto extends ABasicAdminDto {
     private String name;
     private String description;
     private String nameGroup;
-
 }

@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 
+import static org.bouncycastle.asn1.x500.style.RFC4519Style.member;
 
 @SpringBootApplication
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
@@ -26,6 +27,7 @@ import java.util.Date;
 @EnableScheduling
 @EnableAspectJAutoProxy
 public class FoodgateApplication implements CommandLineRunner {
+
     @Autowired
     private GroupRepository groupRepository;
     @Autowired
@@ -39,7 +41,7 @@ public class FoodgateApplication implements CommandLineRunner {
     @Autowired
     private ConsumerRepository consumerRepository;
     @Autowired
-    private  ManagerRepository managerRepository;
+    private ManagerRepository managerRepository;
 
     public FoodgateApplication(GroupRepository groupRepository,
                                PermissionRepository permissionRepository,
@@ -79,6 +81,11 @@ public class FoodgateApplication implements CommandLineRunner {
         if (!permissionRepository.existsByPCode(AuthoritiesConstants.ADD_PERMISSION_GROUP)) {
             Permission permission = new Permission(AuthoritiesConstants.ADD_PERMISSION_GROUP,
                     "add permission to group", "group", AuthoritiesConstants.ADD_PERMISSION_GROUP);
+            permissionRepository.save(permission);
+        }
+        if (!permissionRepository.existsByPCode(AuthoritiesConstants.DELETE_PERMISSION_GROUP)) {
+            Permission permission = new Permission(AuthoritiesConstants.DELETE_PERMISSION_GROUP,
+                    "delete permission of group", "group", AuthoritiesConstants.DELETE_PERMISSION_GROUP);
             permissionRepository.save(permission);
         }
         if (!permissionRepository.existsByPCode(AuthoritiesConstants.GET_LIST_GROUP)) {
@@ -149,12 +156,16 @@ public class FoodgateApplication implements CommandLineRunner {
                     "update member", "member", AuthoritiesConstants.UPDATE_MEMBER);
             permissionRepository.save(permission);
         }
+        if (!permissionRepository.existsByPCode(AuthoritiesConstants.UPDATE_PROFILE_MEMBER)) {
+            Permission permission = new Permission(AuthoritiesConstants.UPDATE_PROFILE_MEMBER,
+                    "update profile member", "member", AuthoritiesConstants.UPDATE_PROFILE_MEMBER);
+            permissionRepository.save(permission);
+        }
         if (!permissionRepository.existsByPCode(AuthoritiesConstants.DELETE_MEMBER)) {
             Permission permission = new Permission(AuthoritiesConstants.DELETE_MEMBER,
                     "delete member", "member", AuthoritiesConstants.DELETE_MEMBER);
             permissionRepository.save(permission);
         }
-
         // CONSUMER API
         if (!permissionRepository.existsByPCode(AuthoritiesConstants.GET_LIST_CONSUMER)) {
             Permission permission = new Permission(AuthoritiesConstants.GET_LIST_CONSUMER,

@@ -1,14 +1,21 @@
 package com.webapp.foodgate.form.member;
 
 import com.webapp.foodgate.validation.PhoneNumKind;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-
+@Data
+@ApiModel
 public class UpdateMemberForm {
+    @ApiModelProperty(name="id")
+    @NotNull(message="id can not be null")
+    private Long id;
+
     @ApiModelProperty(name = "phoneNumber")
     @PhoneNumKind(message = "phoneNumber invalid")
     private String phoneNumber;
@@ -31,10 +38,10 @@ public class UpdateMemberForm {
     @NotBlank(message = "login is not blank")
     @NotNull(message = "login is not null")
     private String login;
-    @ApiModelProperty(name = "password")
-    @NotBlank(message = "password is not blank")
-    @NotNull(message = "password is not null")
-    private String password;
+    //    @ApiModelProperty(name = "password")
+//    @NotBlank(message = "password is not blank")
+//    @NotNull(message = "password is not null")
+//    private String password;
     @ApiModelProperty(name = "group_id")
     private Long group_id;
     @ApiModelProperty(name = "kind")

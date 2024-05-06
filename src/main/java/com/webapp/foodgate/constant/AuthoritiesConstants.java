@@ -57,6 +57,8 @@ public class AuthoritiesConstants {
      */
     public static final String CREATE_GROUP = "GRO_C";
     public static final String ADD_PERMISSION_GROUP = "GRO_ADD_PER_GRO";
+
+    public static final String DELETE_PERMISSION_GROUP = "GRO_D_PER_GRO";
     public static final String GET_LIST_GROUP = "GRO_L";
     public static final String GET_GROUP = "GRO_V";
     public static final String UPDATE_GROUP = "GRO_U";
@@ -76,6 +78,7 @@ public class AuthoritiesConstants {
     public static final String GET_LIST_MEMBER = "MEM_L";
     public static final String GET_MEMBER = "MEM_V";
     public static final String UPDATE_MEMBER = "MEM_U";
+    public static final String UPDATE_PROFILE_MEMBER = "MEM_U_PROFILE";
     public static final String DELETE_MEMBER = "MEM_D";
 
     /**
