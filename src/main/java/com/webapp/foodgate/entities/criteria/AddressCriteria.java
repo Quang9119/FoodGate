@@ -16,9 +16,7 @@ import java.util.List;
 @Data
 public class AddressCriteria implements Serializable {
     private static final long serialVersionUID = 1L;
-
     private Long id;
-
     private String houseNumber;
     private String street;
     private String district;

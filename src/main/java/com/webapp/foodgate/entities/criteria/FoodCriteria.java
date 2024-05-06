@@ -29,6 +29,7 @@ public class FoodCriteria implements Serializable {
     private double price;
 
     private Long categoryId;
+
     private Integer status;
 
     public Specification<Food> getSpecification() {

@@ -1,16 +1,18 @@
-package com.webapp.foodgate.dto.permission;
+package com.webapp.foodgate.dto.group;
 
 import com.webapp.foodgate.dto.ABasicAdminDto;
-import io.swagger.annotations.ApiModel;
+import com.webapp.foodgate.dto.permission.PermissionAdminDto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.persistence.Column;
+
 @Data
-public class PermissionAdminDto extends ABasicAdminDto {
+public class GroupAdminDto extends ABasicAdminDto {
     @ApiModelProperty("name")
     private String name;
     @ApiModelProperty("description")
     private String description;
-    @ApiModelProperty("nameGroup")
-    private String nameGroup;
+    @ApiModelProperty("kind")
+    private int kind;
 }

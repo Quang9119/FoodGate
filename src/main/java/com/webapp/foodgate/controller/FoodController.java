@@ -70,7 +70,7 @@ public class FoodController {
         apiMessageDto.setMessage("Update food success");
         return apiMessageDto;
     }
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasAuthority('" + AuthoritiesConstants.DELETE_FOOD + "')")
     public ApiMessageDto<String> delete(@PathVariable("id") Long id) {
         ApiMessageDto<String> apiMessageDto = new ApiMessageDto<>();
@@ -83,7 +83,7 @@ public class FoodController {
         apiMessageDto.setResult(true);
         return apiMessageDto;
     }
-    @GetMapping(value = "/list")
+    @GetMapping(value = "/list",produces = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasAuthority('" + AuthoritiesConstants.GET_LIST_FOOD + "')")
     public ApiMessageDto<ResponseListDto<List<FoodDto>>> list(FoodCriteria foodCriteria, Pageable pageable) {
         ApiMessageDto<ResponseListDto<List<FoodDto>>> responseListObjApiMessageDto = new ApiMessageDto<>();

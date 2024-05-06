@@ -49,8 +49,8 @@ public class TokenProvider {
             keyBytes = secret.getBytes(StandardCharsets.UTF_8);
         }
         this.key = Keys.hmacShaKeyFor(keyBytes);
-        this.tokenValidityInMilliseconds = 1000 * 3600;
-        this.tokenValidityInMillisecondsForRememberMe = 1000 * 7200;
+        this.tokenValidityInMilliseconds =7 * 24 * 1000 * 3600;
+        this.tokenValidityInMillisecondsForRememberMe =30 * 24 * 1000 * 7200;
         this.refreshTokenValidityInMilliseconds = 1000 * 3600 * 100;
     }
 

@@ -15,6 +15,7 @@ import java.util.List;
 
 @Data
 public class CategoryCriteria implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Long id;
     private String name;
     public Specification<Category> getSpecification() {
@@ -31,9 +32,6 @@ public class CategoryCriteria implements Serializable {
                 }
                 return cb.and(predicates.toArray(new Predicate[predicates.size()]));
             }
-
-
-
         };
     }
 }
